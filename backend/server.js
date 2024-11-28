@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const path = require('path');
 const allCoursesRoutes = require('./routes/allCoursesRoutes')
+const scheduleTrainingRoutes = require('./routes/scheduleTrainingRoutes')
 
 const app = express()
 app.use(express.json())
@@ -27,7 +28,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 // Use routes for APIs
 app.use('/api', userRoutes)
 app.use('/api', allCoursesRoutes)
-
+app.use('/api', scheduleTrainingRoutes)
 
 
 app.listen(process.env.PORT)

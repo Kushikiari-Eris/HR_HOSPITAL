@@ -22,7 +22,11 @@ router.get('/courses/:id', allCoursesController.getCourseById)
 router.post('/courses', upload.single('image'), allCoursesController.createCourse)
 router.put('/courses/:id', upload.single('image'), allCoursesController.updateCourse)
 router.delete('/courses/:id', allCoursesController.deleteCourse)
+
+
 router.put('/courses/:courseId/lessons', allCoursesController.addLesson);
 router.put('/courses/:courseId/lessons/:lessonId/quizzes', allCoursesController.addQuizToLesson);
+router.put('/courses/:courseId/lessons/:lessonId', allCoursesController.editLesson); 
+router.delete('/courses/:courseId/lessons/:lessonId', allCoursesController.deleteLesson); 
 
 module.exports = router

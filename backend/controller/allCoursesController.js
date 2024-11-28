@@ -1,5 +1,5 @@
 const Course = require('../models/allCoursesModel');
-
+const mongoose = require('mongoose')
 
 const getAllCourses = async (req, res) => {
   try {
@@ -117,6 +117,79 @@ const addLesson = async (req, res) => {
     }
 };
 
+const editLesson = async (req, res) => {
+  try {
+    const { courseId, lessonId } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(courseId)) {
+      return res.status(400).json({ error: `Invalid courseId: ${courseId}` });
+    }
+    if (!mongoose.Types.ObjectId.isValid(lessonId)) {
+      return res.status(400).json({ error: `Invalid lessonId: ${lessonId}` });
+    }
+
+    const { title, description } = req.body;
+
+    if (!title || !description) {
+      return res.status(400).json({ error: 'Title and description are required' });
+    }
+
+    const course = await Course.findOneAndUpdate(
+      { _id: courseId, 'lessons._id': lessonId },
+      {
+        $set: {
+          'lessons.$.title': title,
+          'lessons.$.description': description,
+        },
+      },
+      { new: true } // Return the updated course
+    );
+
+    if (!course) {
+      return res.status(404).json({ error: 'Course or lesson not found' });
+    }
+
+    const updatedLesson = course.lessons.id(lessonId);
+    res.status(200).json(updatedLesson);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
+const deleteLesson = async (req, res) => {
+  // Extract courseId and lessonId from the route parameters
+  const { courseId, lessonId } = req.params;
+
+  try {
+    // Find the course by courseId
+    const course = await Course.findById(courseId);
+    if (!course) {
+      return res.status(404).json({ error: 'Course not found' });
+    }
+
+    // Find the lesson index within the course lessons array
+    const lessonIndex = course.lessons.findIndex(lesson => lesson._id.toString() === lessonId);
+    if (lessonIndex === -1) {
+      return res.status(404).json({ error: 'Lesson not found in course' });
+    }
+
+    // Remove the lesson from the lessons array
+    course.lessons.splice(lessonIndex, 1);
+
+    // Save the updated course document
+    await course.save();
+
+    // Return success response
+    res.status(200).json({ message: 'Lesson deleted successfully' });
+
+  } catch (error) {
+    console.error('Error deleting lesson:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+
 const addQuizToLesson = async (req, res) => {
     try {
         const { courseId, lessonId } = req.params;
@@ -164,5 +237,7 @@ module.exports = {
     updateCourse,
     deleteCourse,
     addLesson,
-    addQuizToLesson
+    addQuizToLesson,
+    editLesson,
+    deleteLesson
 }

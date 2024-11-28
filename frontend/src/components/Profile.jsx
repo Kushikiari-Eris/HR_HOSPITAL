@@ -54,7 +54,7 @@ const Profile = () => {
     <>
       <div className="flex gap-3 items-center">
           <MdOutlineDarkMode className="size-6 cursor-pointer" />
-          {/* Notifications Icon */}
+          
           {role === 'admin' && (
             <div className="relative">
               <IoMdNotificationsOutline
@@ -76,15 +76,14 @@ const Profile = () => {
             </div>
           )}
 
-          {role === 'auditor' && (
+          {role === 'user' && (
             <div className="relative">
               <IoMdNotificationsOutline
                 className="size-6 cursor-pointer"
-                onClick={() => setShowNotifications(!showNotifications)}
               />
-            
             </div>
           )}
+
 
           {/* Profile Dropdown */}
           <div className="dropdown dropdown-end">
@@ -105,11 +104,6 @@ const Profile = () => {
               <li>
                 <a>Settings</a>
               </li>
-              {role === 'user' && (
-                <li>
-                  <Link to="/market/orders">Orders</Link>
-                </li>
-              )}
               <li>
                 <a onClick={logout}>Log out</a>
               </li>

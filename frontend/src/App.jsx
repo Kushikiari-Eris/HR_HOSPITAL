@@ -3,7 +3,6 @@ import './index.css';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import user from './pages/user/user';
 import AuthContext, { AuthContextProvider } from './context/AuthContext';
 import React, { lazy, useContext } from 'react';
 import AdminPanel from './pages/admin/AdminPanel';
@@ -11,6 +10,12 @@ import { CartProvider, useCartContext } from './context/CartContext';
 import Dashboard from './pages/admin/Dashboard';
 import AllCourses from './pages/admin/Learning Management/AllCourses';
 import Lessons from './pages/admin/Learning Management/Lessons';
+import UserPanel from './pages/user/UserPanel';
+import UserHome from './pages/user/UserHome';
+import UserCourses from './pages/user/UserCourses';
+import UserLesson from './pages/user/UserLesson';
+import UserQuiz from './pages/user/UserQuiz';
+import ScheduleTraining from './pages/admin/Training Management/ScheduleTraining';
 
 
 
@@ -46,11 +51,16 @@ function RoutesWrapper() {
       <Route path='/' element={<Home />} />
 
       {/**Auth */}
-      <Route path='/register' element={!loggedIn ? <Register /> : role === 'admin' ? <Navigate to='/admin/dashboard' /> : role === 'auditor' ? <Navigate to='/auditor/dashboard' /> : <Navigate to='/market' />} />
-      <Route path='/login' element={!loggedIn ? <Login /> : role === 'admin' ? <Navigate to='/admin/dashboard' /> : role === 'auditor' ? <Navigate to='/auditor/dashboard' /> : <Navigate to='/market' />} />
+      <Route path='/register' element={!loggedIn ? <Register /> : role === 'admin' ? <Navigate to='/admin/dashboard' /> : <Navigate to='/user/home' />} />
+      <Route path='/login' element={!loggedIn ? <Login /> : role === 'admin' ? <Navigate to='/admin/dashboard' />  : <Navigate to='/user/home' />} />
 
-      {/**MarketPage */}
-      <Route path='/market' element={loggedIn && role === 'user' ? <Market /> : <Navigate to='/login' />}/>
+      {/**UserPage */}
+      <Route path='/user' element={loggedIn && role === 'user' ? <UserPanel /> : <Navigate to='/login' />}>
+        <Route path='home' element={<UserHome/>}/>
+        <Route path='courses' element={<UserCourses/>}/>
+        <Route path='lesson/:courseId' element={<UserLesson/>}/>
+        <Route path='quiz/:lessonId' element={<UserQuiz/>}/>
+      </Route>
     
 
       {/**AdminPage */}
@@ -58,6 +68,7 @@ function RoutesWrapper() {
         <Route path='dashboard' element={<Dashboard/>}/>
         <Route path='all-courses' element={<AllCourses/>}/>
         <Route path='lesson/:courseId' element={<Lessons/>}/>
+        <Route path='scheduleTraining' element={<ScheduleTraining/>}/>
       </Route>
 
     </Routes>

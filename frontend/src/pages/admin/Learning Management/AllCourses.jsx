@@ -20,13 +20,7 @@ const AllCourses = () => {
         title: '',
         description: '',
     });
-    const [quizData, setQuizData] = useState({
-        question: '',
-        options: ['', '', '', ''], 
-        answer: '',
-    });
-    
-    const [editingLessonId, setEditingLessonId] = useState(null);
+
 
     useEffect(() => {
         const fetchCourses = async () => {
@@ -170,49 +164,6 @@ const AllCourses = () => {
     };
     
 
-    const handleQuizChange = (e) => {
-        const { name, value } = e.target;
-        setQuizData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    };
-    
-    const handleQuizOptionChange = (index, value) => {
-        const updatedOptions = [...quizData.options];
-        updatedOptions[index] = value;
-        setQuizData((prevData) => ({
-            ...prevData,
-            options: updatedOptions,
-        }));
-    };
-
-    const handleAddQuiz = async (courseId, lessonId) => {
-        console.log('Course ID:', courseId);  // Debugging: Check if courseId is set
-    console.log('Lesson ID:', lessonId);  // Debugging: Check if lessonId is set
-        if (!courseId || !lessonId) {
-            console.error('Course or Lesson ID is missing');
-            return;
-        }
-    
-        const quiz = {
-            question: quizData.question,
-            options: quizData.options,
-            answer: quizData.answer,
-        };
-    
-        try {
-            await axios.put(`http://localhost:7684/api/courses/${courseId}/lessons/${lessonId}/quizzes`, quiz);
-            alert('Quiz added successfully!');
-            setQuizData({ question: '', options: ['', '', '', ''], answer: '' }); // Reset quiz form
-            document.getElementById('quiz_modal').close();
-        } catch (error) {
-            console.error('Error adding quiz:', error);
-            alert('Failed to add quiz.');
-        }
-    };
-    
-
   return (
     <>
        <div className="p-4 ">
@@ -239,7 +190,7 @@ const AllCourses = () => {
             
             <div className='bg-white rounded-lg p-4 border'>
                 <div className='p-2 flex justify-between items-center'>
-                    <h2 className='text-sans font-bold text-lg'>
+                    <h2 className='font-sans font-bold text-lg'>
                         All-Courses
                     </h2>
                     <button type="button" onClick={()=>document.getElementById('my_modal_1').showModal()} className="focus:outline-none text-white bg-emerald hover:bg-emerald  font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700">
