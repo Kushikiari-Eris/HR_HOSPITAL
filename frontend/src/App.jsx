@@ -1,6 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import './index.css';
-import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import AuthContext, { AuthContextProvider } from './context/AuthContext';
@@ -16,6 +15,11 @@ import UserCourses from './pages/user/UserCourses';
 import UserLesson from './pages/user/UserLesson';
 import UserQuiz from './pages/user/UserQuiz';
 import ScheduleTraining from './pages/admin/Training Management/ScheduleTraining';
+import EmployeeProgress from './pages/admin/Training Management/EmployeeProgress';
+import Task from './pages/admin/Training Management/Task';
+import UserTask from './pages/user/UserTask';
+import EmployeeTimeLog from './pages/admin/TimeAndAttendance/EmployeeTimeLog';
+import ShiftScheduling from './pages/admin/TimeAndAttendance/ShiftScheduling';
 
 
 
@@ -48,8 +52,6 @@ function RoutesWrapper() {
 
   return (
     <Routes>
-      <Route path='/' element={<Home />} />
-
       {/**Auth */}
       <Route path='/register' element={!loggedIn ? <Register /> : role === 'admin' ? <Navigate to='/admin/dashboard' /> : <Navigate to='/user/home' />} />
       <Route path='/login' element={!loggedIn ? <Login /> : role === 'admin' ? <Navigate to='/admin/dashboard' />  : <Navigate to='/user/home' />} />
@@ -60,6 +62,7 @@ function RoutesWrapper() {
         <Route path='courses' element={<UserCourses/>}/>
         <Route path='lesson/:courseId' element={<UserLesson/>}/>
         <Route path='quiz/:lessonId' element={<UserQuiz/>}/>
+        <Route path='usertask' element={<UserTask/>}/>
       </Route>
     
 
@@ -69,8 +72,13 @@ function RoutesWrapper() {
         <Route path='all-courses' element={<AllCourses/>}/>
         <Route path='lesson/:courseId' element={<Lessons/>}/>
         <Route path='scheduleTraining' element={<ScheduleTraining/>}/>
+        <Route path='employeeProgress' element={<EmployeeProgress/>}/>
+        <Route path='task' element={<Task/>}/>
+        <Route path='log' element={<EmployeeTimeLog/>}/>
+        <Route path='shift' element={<ShiftScheduling/>}/>
       </Route>
 
+      <Route path="*" element={<Navigate to={loggedIn ? (role === 'admin' ? '/admin/dashboard' : '/user/home') : '/login'} />} />
     </Routes>
   );
 }

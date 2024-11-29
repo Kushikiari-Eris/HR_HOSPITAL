@@ -47,7 +47,7 @@ const Profile = () => {
     }
     Cookies.remove('userId');
     await getLoggedIn();
-    navigate('/');
+    navigate('/login');
   };
 
   return (

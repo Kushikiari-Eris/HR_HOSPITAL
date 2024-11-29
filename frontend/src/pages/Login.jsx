@@ -3,7 +3,6 @@ import React, { useContext, useState } from 'react'
 import Swal from 'sweetalert2'
 import Cookies from 'js-cookie'
 import AuthContext from '../context/AuthContext'
-import bg2 from '../assets/image/bg2.jpg'
 import axiosInstance from '../utils/AxiosInstance'
 
 
@@ -84,40 +83,38 @@ const Login = () => {
 
   return (
     <>
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="hero bg-base-200 min-h-screen" style={{ backgroundImage: `url(${bg2})` }}>
-            <div className="hero-content flex-col lg:flex-row-reverse">
-              <div className="text-center lg:text-left">
-                <h1 className="text-5xl font-bold text-green-400 text-right">Sign up</h1>
-                <p className="py-6 text-black text-right">
-                Access your account by logging in and enjoy exclusive member perks, personalized recommendations, and more!.
-                </p>
+      <div className='flex justify-center mt-40'>
+        <div className='p-4  w-4/6'>
+          <div className='flex justify-center'>
+              <h1 className='font-sans font-bold text-6xl py-6'>HR</h1>
+          </div>
+          <div className='flex justify-center'>
+              <p className='font-sans font-bold py-6 text-xl'>Login</p>
+          </div>
+          <div className='flex justify-center'>
+            <form className="px-20 w-3/4" onSubmit={login}>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Email</span>
+                </label>
+                <input type="email" placeholder="email" className="input input-bordered" onChange={(e) => setEmail(e.target.value)} value={email}/>
               </div>
-              <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                <form className="card-body" onSubmit={login}>
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">Email</span>
-                    </label>
-                    <input type="email" placeholder="email" className="input input-bordered" onChange={(e) => setEmail(e.target.value)} value={email}/>
-                  </div>
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">Password</span>
-                    </label>
-                    <input type="password" placeholder="password" className="input input-bordered" onChange={(e) => setPassword(e.target.value)} value={password}/>
-                  </div>
-                  <div className='text-sm'>
-                    <p>Dont have an account? <a href='/register' className='underline hover:text-blue-500'>Create an Account</a></p>
-                  </div>
-                  <div className="form-control mt-4">
-                    <button className="btn btn-primary">Login</button>
-                  </div>
-                </form>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Password</span>
+                </label>
+                <input type="password" placeholder="password" className="input input-bordered" onChange={(e) => setPassword(e.target.value)} value={password}/>
               </div>
-            </div>
+              <div className='text-sm mt-2'>
+                <p>Dont have an account? <a href='/register' className='underline hover:text-blue-500'>Create an Account</a></p>
+              </div>
+              <div className="form-control mt-4">
+                <button className=" p-3 rounded-lg hover:bg-orange-300 bg-orange-500 text-white">Login</button>
+              </div>
+            </form>
           </div>
         </div>
+      </div>
     </>
   )
 }

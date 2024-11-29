@@ -102,7 +102,16 @@ const Sidebar = () => {
                             </NavLink>
                         </ul>
                         <ul>
-                            <NavLink to="/admin/productTracking" className={({ isActive }) => `font-bold flex items-center w-full p-2 py-3 text-white transition duration-75 rounded-lg  group hover:bg-gray-900  dark:hover:bg-gray-700 ${isActive ? 'bg-gray-900 dark:bg-gray-700' : ''}`}>
+                            <NavLink to="/admin/task" className={({ isActive }) => `font-bold flex items-center w-full p-2 py-3 text-white transition duration-75 rounded-lg  group hover:bg-gray-900  dark:hover:bg-gray-700 ${isActive ? 'bg-gray-900 dark:bg-gray-700' : ''}`}>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
+                            </svg>
+
+                            {!isCollapsed && <span className="ms-3 text-sm">Task</span>}
+                            </NavLink>
+                        </ul>
+                        <ul>
+                            <NavLink to="/admin/employeeProgress" className={({ isActive }) => `font-bold flex items-center w-full p-2 py-3 text-white transition duration-75 rounded-lg  group hover:bg-gray-900  dark:hover:bg-gray-700 ${isActive ? 'bg-gray-900 dark:bg-gray-700' : ''}`}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
                             </svg>
@@ -112,33 +121,12 @@ const Sidebar = () => {
                         </ul>
                     </li>
                     
-                    {!isCollapsed && <h2 className="font-bold text-gray-800 font-sans text-sm py-3">SUCCESS PLANNING</h2>}
-                    
-                    <li>
-                        <ul>
-                            <NavLink to="/admin/productTracking" className={({ isActive }) => `font-bold flex items-center w-full p-2 py-3 text-white transition duration-75 rounded-lg  group hover:bg-gray-900  dark:hover:bg-gray-700 ${isActive ? 'bg-gray-900 dark:bg-gray-700' : ''}`}>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
-                            </svg>
 
-                            {!isCollapsed && <span className="ms-3 text-sm">Talent Pool</span>}
-                            </NavLink>
-                        </ul>
-                        <ul>
-                            <NavLink to="/admin/productTracking" className={({ isActive }) => `font-bold flex items-center w-full p-2 py-3 text-white transition duration-75 rounded-lg  group hover:bg-gray-900  dark:hover:bg-gray-700 ${isActive ? 'bg-gray-900 dark:bg-gray-700' : ''}`}>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
-                            </svg>
-
-                            {!isCollapsed && <span className="ms-3 text-sm">Succession PLan</span>}
-                            </NavLink>
-                        </ul>
-                    </li>
                     {!isCollapsed && <h2 className="font-bold text-gray-800 font-sans text-sm py-3">TIME AND ATTENDANCE</h2>}
                     
                     <li>
                         <ul>
-                            <NavLink to="/admin/productTracking" className={({ isActive }) => `font-bold flex items-center w-full p-2 py-3 text-white transition duration-75 rounded-lg  group hover:bg-gray-900  dark:hover:bg-gray-700 ${isActive ? 'bg-gray-900 dark:bg-gray-700' : ''}`}>
+                            <NavLink to="/admin/log" className={({ isActive }) => `font-bold flex items-center w-full p-2 py-3 text-white transition duration-75 rounded-lg  group hover:bg-gray-900  dark:hover:bg-gray-700 ${isActive ? 'bg-gray-900 dark:bg-gray-700' : ''}`}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
                             </svg>
@@ -147,7 +135,7 @@ const Sidebar = () => {
                             </NavLink>
                         </ul>
                         <ul>
-                            <NavLink to="/admin/productTracking" className={({ isActive }) => `font-bold flex items-center w-full p-2 py-3 text-white transition duration-75 rounded-lg  group hover:bg-gray-900  dark:hover:bg-gray-700 ${isActive ? 'bg-gray-900 dark:bg-gray-700' : ''}`}>
+                            <NavLink to="/admin/shift" className={({ isActive }) => `font-bold flex items-center w-full p-2 py-3 text-white transition duration-75 rounded-lg  group hover:bg-gray-900  dark:hover:bg-gray-700 ${isActive ? 'bg-gray-900 dark:bg-gray-700' : ''}`}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
                             </svg>
@@ -157,11 +145,33 @@ const Sidebar = () => {
                         </ul>
                     </li>
 
-                    {!isCollapsed && <h2 className="font-bold text-gray-800 font-sans text-sm py-3">CLAIM AND REIMBURSTMENT</h2>}
+                    {!isCollapsed && <h2 className="font-bold text-gray-800 font-sans text-sm py-3">SUCCESS PLANNING</h2>}
                     
                     <li>
                         <ul>
-                            <NavLink to="/admin/productTracking" className={({ isActive }) => `font-bold flex items-center w-full p-2 py-3 text-white transition duration-75 rounded-lg  group hover:bg-gray-900  dark:hover:bg-gray-700 ${isActive ? 'bg-gray-900 dark:bg-gray-700' : ''}`}>
+                            <NavLink to="/admin/plan" className={({ isActive }) => `font-bold flex items-center w-full p-2 py-3 text-white transition duration-75 rounded-lg  group hover:bg-gray-900  dark:hover:bg-gray-700 ${isActive ? 'bg-gray-900 dark:bg-gray-700' : ''}`}>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
+                            </svg>
+
+                            {!isCollapsed && <span className="ms-3 text-sm">Talent Pool</span>}
+                            </NavLink>
+                        </ul>
+                        <ul>
+                            <NavLink to="/admin/plan" className={({ isActive }) => `font-bold flex items-center w-full p-2 py-3 text-white transition duration-75 rounded-lg  group hover:bg-gray-900  dark:hover:bg-gray-700 ${isActive ? 'bg-gray-900 dark:bg-gray-700' : ''}`}>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
+                            </svg>
+
+                            {!isCollapsed && <span className="ms-3 text-sm">Succession PLan</span>}
+                            </NavLink>
+                        </ul>
+                    </li>
+                    {!isCollapsed && <h2 className="font-bold text-gray-800 font-sans text-sm py-3">CLAIM AND REIMBURSEMENT</h2>}
+                    
+                    <li>
+                        <ul>
+                            <NavLink to="/admin/plan" className={({ isActive }) => `font-bold flex items-center w-full p-2 py-3 text-white transition duration-75 rounded-lg  group hover:bg-gray-900  dark:hover:bg-gray-700 ${isActive ? 'bg-gray-900 dark:bg-gray-700' : ''}`}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
                             </svg>
@@ -170,7 +180,7 @@ const Sidebar = () => {
                             </NavLink>
                         </ul>
                         <ul>
-                            <NavLink to="/admin/productTracking" className={({ isActive }) => `font-bold flex items-center w-full p-2 py-3 text-white transition duration-75 rounded-lg  group hover:bg-gray-900  dark:hover:bg-gray-700 ${isActive ? 'bg-gray-900 dark:bg-gray-700' : ''}`}>
+                            <NavLink to="/admin/plan" className={({ isActive }) => `font-bold flex items-center w-full p-2 py-3 text-white transition duration-75 rounded-lg  group hover:bg-gray-900  dark:hover:bg-gray-700 ${isActive ? 'bg-gray-900 dark:bg-gray-700' : ''}`}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
                             </svg>
@@ -184,7 +194,7 @@ const Sidebar = () => {
                     
                     <li>
                         <ul>
-                            <NavLink to="/admin/productTracking" className={({ isActive }) => `font-bold flex items-center w-full p-2 py-3 text-white transition duration-75 rounded-lg  group hover:bg-gray-900  dark:hover:bg-gray-700 ${isActive ? 'bg-gray-900 dark:bg-gray-700' : ''}`}>
+                            <NavLink to="/admin/plan" className={({ isActive }) => `font-bold flex items-center w-full p-2 py-3 text-white transition duration-75 rounded-lg  group hover:bg-gray-900  dark:hover:bg-gray-700 ${isActive ? 'bg-gray-900 dark:bg-gray-700' : ''}`}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
                             </svg>
@@ -224,6 +234,17 @@ const Sidebar = () => {
 
 
                                 {!isCollapsed &&<span className="ms-3 text-sm">Courses</span>}
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink 
+                                to="/user/userTask" 
+                                className={({ isActive }) => `font-bold flex items-center p-2 py-3 text-white rounded-lg dark:text-white ${isActive ? 'bg-gray-900 dark:bg-gray-700' : 'hover:bg-gray-900 dark:hover:bg-gray-700'}`}
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 6.878V6a2.25 2.25 0 0 1 2.25-2.25h7.5A2.25 2.25 0 0 1 18 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 0 0 4.5 9v.878m13.5-3A2.25 2.25 0 0 1 19.5 9v.878m0 0a2.246 2.246 0 0 0-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0 1 21 12v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6c0-.98.626-1.813 1.5-2.122" />
+                                </svg>
+                                {!isCollapsed &&<span className="ms-3 text-sm">Task</span>}
                             </NavLink>
                         </li>
                     </ul>
